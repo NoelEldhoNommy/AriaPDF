@@ -1,11 +1,6 @@
-# PDF.js [![Build Status](https://github.com/mozilla/pdf.js/workflows/CI/badge.svg?branch=master)](https://github.com/mozilla/pdf.js/actions?query=workflow%3ACI+branch%3Amaster)
-
-[PDF.js](https://mozilla.github.io/pdf.js/) is a Portable Document Format (PDF) viewer that is built with HTML5.
-
-PDF.js is community-driven and supported by Mozilla. Our goal is to
-create a general-purpose, web standards-based platform for parsing and
-rendering PDFs.
-
+# AriaPDF : Minimalistic PDF made for niche people
+AriaPDF is a PDF reader made for people who like a PDF that is best in design space, under the hood it is just PDF.js but with modern UI and essentially like a facelift. It's an early project now, we only just scratch the surface,
+please watch this space for more updates
 ## Contributing
 
 PDF.js is an open source project and always looking for more contributors. To
@@ -32,14 +27,11 @@ latest JavaScript features; please also see [this wiki page](https://github.com/
 
 ### Browser Extensions
 
-#### Firefox
-
-PDF.js is built into version 19+ of Firefox.
+we haven't made our own yet!
 
 #### Chrome
 
-+ The official extension for Chrome can be installed from the [Chrome Web Store](https://chrome.google.com/webstore/detail/pdf-viewer/oemmndcbldboiebfnladdacbdfmadadm).
-*This extension is maintained by [@Rob--W](https://github.com/Rob--W).*
+
 + Build Your Own - Get the code as explained below and issue `npx gulp chromium`. Then open
 Chrome, go to `Tools > Extension` and load the (unpackaged) extension from the
 directory `build/chromium`.
@@ -48,7 +40,7 @@ directory `build/chromium`.
 
 To get a local copy of the current code, clone it using git:
 
-    $ git clone https://github.com/mozilla/pdf.js.git
+    $ git clone https://github.com/mozilla/AriaPDF.git
     $ cd pdf.js
 
 Next, install Node.js via the [official package](https://nodejs.org) or via
