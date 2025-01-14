@@ -29,8 +29,8 @@ directory `build/chromium`.
 
 To get a local copy of the current code, clone it using git:
 
-    $ git clone https://github.com/mozilla/AriaPDF.git
-    $ cd pdf.js
+    $ git clone https://github.com/NoelEldhoNommy/AriaPDF-fork.git
+    $ cd AriaPDF-Fork
 
 Next, install Node.js via the [official package](https://nodejs.org) or via
 [nvm](https://github.com/creationix/nvm). If everything worked out, install
