@@ -215,7 +215,7 @@ function preprocess(inFilename, outFilename, defines) {
         line
           .replaceAll(/^\/\/|^<!--/g, "  ")
           .replaceAll(/(^\s*)\/\*/g, "$1  ")
-          .replaceAll(/\*\/$|-->$/g, "")
+          .replaceAll(/\*\/$|--!?>$/g, "")
       );
     }
   }
