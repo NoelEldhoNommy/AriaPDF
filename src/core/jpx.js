@@ -14,6 +14,7 @@
  */
 
 import { BaseException, warn } from "../shared/util.js";
+import { fetchBinaryData } from "./core_utils.js";
 import OpenJPEG from "../../external/openjpeg/openjpeg.js";
 import { Stream } from "./stream.js";
 
@@ -27,8 +28,6 @@ class JpxImage {
   static #buffer = null;
 
   static #handler = null;
-
-  static #instantiationFailed = false;
 
   static #modulePromise = null;
 
@@ -44,23 +43,19 @@ class JpxImage {
   }
 
   static async #instantiateWasm(imports, successCallback) {
+    const filename = "openjpeg.wasm";
     try {
       if (!this.#buffer) {
         if (this.#wasmUrl !== null) {
-          const response = await fetch(`${this.#wasmUrl}openjpeg.wasm`);
-          this.#buffer = await response.arrayBuffer();
+          this.#buffer = await fetchBinaryData(`${this.#wasmUrl}${filename}`);
         } else {
           this.#buffer = await this.#handler.sendWithPromise("FetchWasm", {
-            filename: "openjpeg.wasm",
+            filename,
           });
         }
       }
       const results = await WebAssembly.instantiate(this.#buffer, imports);
       return successCallback(results.instance);
-    } catch (e) {
-      this.#instantiationFailed = true;
-      warn(`Cannot load openjpeg.wasm: "${e}".`);
-      return false;
     } finally {
       this.#handler = null;
       this.#wasmUrl = null;
@@ -71,10 +66,6 @@ class JpxImage {
     bytes,
     { numComponents = 4, isIndexedColormap = false, smaskInData = false } = {}
   ) {
-    if (this.#instantiationFailed) {
-      throw new JpxError("OpenJPEG failed to instantiate.");
-    }
-
     this.#modulePromise ||= OpenJPEG({
       warn,
       instantiateWasm: this.#instantiateWasm.bind(this),
