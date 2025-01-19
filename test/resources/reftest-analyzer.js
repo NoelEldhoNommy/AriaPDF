@@ -29,6 +29,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 Original author: L. David Baron <dbaron@dbaron.org>
 */
 
+import DOMPurify from 'dompurify';
+
 // Global variables
 const XLINK_NS = "http://www.w3.org/1999/xlink";
 const SVG_NS = "http://www.w3.org/2000/svg";
@@ -67,7 +69,7 @@ window.onload = function () {
       ID("logEntry").value = params.get("log");
       logPasted();
     } else if (params.has("web")) {
-      loadFromWeb(params.get("web"));
+      loadFromWeb(DOMPurify.sanitize(params.get("web")));
     }
     ID("logEntry").focus();
   }
