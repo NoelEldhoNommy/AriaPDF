@@ -338,7 +338,7 @@
    margin: 0;
    display: flex;
    flex-direction: column;
-   background-image: url("Desktop - 1.png"); /* Add your image path here */
+   background-image: url("Desktop-1.png"); /* Add your image path here */
    background-size: cover; /* Makes image cover the entire container */
    background-position: center; /* Centers the image */
    background-repeat: no-repeat; /* Prevents image from repeating */
